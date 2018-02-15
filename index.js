@@ -8,7 +8,7 @@ function mountCassette(cassettePath) {
 
   var responseInterceptor = axios.interceptors.response.use(
     ResponseMiddleware.success(cassettePath),
-    ResponseMiddleware.failure
+    ResponseMiddleware.failure.bind(null, cassettePath)
   );
 
   var requestInterceptor = axios.interceptors.request.use(
